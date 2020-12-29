@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <form id="myForm">
+        <input type="text" name="fName" id="fName" placeholder="First Name">
+        <input type="text" name="sName" id="sName" placeholder="Second Name">
+        <input type="submit" value="Submit">
+    </form>
+    <div id="root">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody id="tdata">
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const myForm = document.getElementById("myForm");
+        let arr = [];
+        myForm.addEventListener('submit', (even) => {
+            event.preventDefault();
+            arr.push({
+                fname: myForm.fName.value,
+                sname: myForm.sName.value
+            });
+            console.log(arr)
+            loadData(arr)
+        })
+        function loadData(arr) {
+
+            for (let i = 0; i < arr.length; i++) {
+                var temp = "";
+                arr.forEach((u) => {
+                    temp += "<tr>";
+                    temp += "<td>" + u.fname + "</td>";
+                    temp += "<td>" + u.sname + "</td></tr>";
+                })
+                document.getElementById("tdata").innerHTML = temp;
+
+            }
+        }
+    </script>
+</body>
+
+</html>
